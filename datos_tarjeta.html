@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    
+    <title>Datos Tarjeta</title>
+
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet"> <!-- Esto no existe por ahora, lo dejo por si las moscas lo necesitamos -->
+
+    <!-- Custom styles for this template -->
+    <link href="css/datos_tarjeta.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+    <div class="container">
+        <form class="form-signin" action="pago_ok.html">
+            
+            <img class="mb-4" src="imagenes/credit_card.png" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">Datos de la Tarjeta</h1>
+
+            <label for="inputNombre" class="sr-only">Nombre</label>
+            <input type="email" id="inputNombre" class="form-control" placeholder="Nombre del Titular" required autofocus>
+            <label for="inputNumero" class="sr-only">Número de la Tarjeta</label>
+            <input type="number" id="inputNumero" class="form-control" placeholder="Número de Tarjeta" required>
+            <label for="fecha_caducidad" class="sr-only">Fecha de Caducidad</label>
+            <input type="date" id="fecha_caducidad" class="form-control" placeholder="Fecha Caducidad" required>
+            <label for="CVV" class="sr-only">CVV</label>
+            <input type="number" id="CVV" class="form-control" placeholder="CVV" required>
+            
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Pagar</button>
+            
+          </form>
+    </div>
+   
+  </body>
+</html>
