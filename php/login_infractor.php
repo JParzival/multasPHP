@@ -7,7 +7,7 @@
 
     $_SESSION['credencial'] = $credencial;
 
-    include 'conexion_bd.php'
+    include 'conexion_bd.php';
     
     $consulta = mysqli_query ($conexion, "SELECT CREDENCIAL, `PASSWORD` FROM INFRACTOR WHERE `PASSWORD` = '$pass' AND CREDENCIAL = '$credencial'");
     $nfilas = mysqli_num_rows ($consulta);

@@ -36,6 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] != "POST")
         }
     }
 
+
+    ## Aquí ha pasado la criba, ahora tendremos que meterlo en la DB
 }
 
 ?>
