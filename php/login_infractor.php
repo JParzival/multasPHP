@@ -1,11 +1,15 @@
 <?php
 
+    session_start();
+
     $pass = $_POST['password'];
     $credencial = $_POST['credencial'];
 
+    $_SESSION['credencial'] = $credencial;
+
     include 'conexion_bd.php'
     
-    $consulta = mysqli_query ($conexion, "SELECT CREDENCIAL, CONTRASENA FROM USUARIOS WHERE CONTRASENA = '$pass' AND CREDENCIAL = '$credencial'");
+    $consulta = mysqli_query ($conexion, "SELECT CREDENCIAL, `PASSWORD` FROM INFRACTOR WHERE `PASSWORD` = '$pass' AND CREDENCIAL = '$credencial'");
     $nfilas = mysqli_num_rows ($consulta);
     
     if($nfilas == 0)

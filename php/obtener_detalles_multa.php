@@ -4,13 +4,7 @@
     $id_multa = $_SERVER['multa']
     
     
-    $user = 'root';
-    $contrasena = '';
-    $ip = 'localhost';
-    $database = 'database_multas';
-    
-    $conexion = mysqli_connect($ip, $user, $contrasena, $database) or die ("Conexión Fallida a $database");
-    
+    include 'conexion_bd.php';
     
     $consulta = mysqli_query ($conexion, "SELECT FECHA, RAZON, LUGAR, PRECIO, PAGO FROM MULTAS WHERE ID = '$id_multa'");
     $nfilas = mysqli_num_rows ($consulta);
