@@ -9,3 +9,4 @@
 
     ## Hacemos la conexión pasándole los credenciales
     $conexion = mysqli_connect($ip, $user, $contrasena, $database) or die ("Conexión Fallida a $database");
+    
