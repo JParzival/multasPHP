@@ -1,6 +1,6 @@
 <?php
 
-$nombre_titular = $_SERVER['nombre_titular']:
+$nombre_titular = $_SERVER['nombre_titular'];
 $fecha_caducidad = $_SERVER['fecha_caducidad'];
 $numero_tarjeta = $_SERVER['numero_tarjeta'];
 $cvv = $_SERVER['CVV'];
