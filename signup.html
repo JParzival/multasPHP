@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -23,12 +24,13 @@
 
   <body class="text-center">
     <div class="container">
-        <form class="form-signin">
+        <form class="form-signin" action="php/signup_infractor.php" method="GET">
 
             <h1 class="h3 mb-3 font-weight-normal">Registrarse</h1>
 
             <label for="inputEmail" class="sr-only">Email</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+            <input type="text" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+            <!--Pongo ese input como text porque si lo pongo como email ya bootstrap nos hace la gracia de comprobar si es email-->
 
             <label for="inputPassword" class="sr-only">Contraseña</label>
             <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
@@ -36,8 +38,8 @@
             <label for="inputMatricula" class="sr-only">Matrícula</label>
             <input type="text" id="inputMatricula" class="form-control" placeholder="Matricula" required>
 
-            <label for="inputDocumento" class="sr-only">DNI-CIF</label>
-            <input type="text" id="inputDocumento" class="form-control" placeholder="NIF-CIF" required>
+            <label for="credencial" class="sr-only">DNI-CIF</label>
+            <input type="text" id="credencial" class="form-control" placeholder="NIF-CIF" required>
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">¡Registrarse!</button>
             
