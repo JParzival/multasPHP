@@ -1,7 +1,7 @@
 <?php
 
     ## Obtenemos la id de la multa de la pantalla anterior.
-    $id_multa = $_SERVER['multa']
+    $id_multa = $_SERVER['multa'];
     
     
     include 'conexion_bd.php';

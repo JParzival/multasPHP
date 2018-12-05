@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST")
     $contrasena = $_SERVER['contrasena'];
     $matricula = $_SERVER['matricula'];
 
-    if($email === NULL || $credencial === NULL || $contrasena === NULL || $matricula === NULL)
+    if ($email === NULL || $credencial === NULL || $contrasena === NULL || $matricula === NULL)
     {
         print("Hay campos vacíos");
         sleep(2);
@@ -22,13 +22,13 @@ if ($_SERVER["REQUEST_METHOD"] != "POST")
             header("location: signup.html");
         }
         $long_contr = length($contrasena);
-        if($long_contr < 5)
+        if ($long_contr < 5)
         {
             print("es muy corta!");
             sleep(2);
             header("location: signup.html");
         }
-        if($credencial < 9 || $credencial > 9)
+        if ($credencial < 9 || $credencial > 9)
         {
             print("credencial inválido");
             sleep(2);
