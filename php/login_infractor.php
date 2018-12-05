@@ -2,13 +2,8 @@
 
     $pass = $_POST['password'];
     $credencial = $_POST['credencial'];
-    
-    $user = 'root';
-    $contrasena = '';
-    $ip = 'localhost';
-    $database = 'database_multas';
-    
-    $conexion = mysqli_connect($ip, $user, $contrasena, $database) or die ("Conexión Fallida a $database");
+
+    include 'conexion_bd.php'
     
     $consulta = mysqli_query ($conexion, "SELECT CREDENCIAL, CONTRASENA FROM USUARIOS WHERE CONTRASENA = '$pass' AND CREDENCIAL = '$credencial'");
     $nfilas = mysqli_num_rows ($consulta);
