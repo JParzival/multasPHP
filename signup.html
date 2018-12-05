@@ -1,50 +1,60 @@
 <!doctype html>
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/imagenes/signup.png">
+<html lang="es">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    
-    <title>Sign-up</title>
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="/imagenes/signup.png">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <link href="css/signup.css" rel="stylesheet">
+  <title>Sign-up</title>
+</head>
 
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/signup.css" rel="stylesheet">
-    
-  </head>
-
-  <body class="text-center">
-    <div class="container">
+<body class="text-center">
+  <div class="container">
+    <div class="row signup">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
         <form class="form-signin" action="php/signup_infractor.php" method="GET">
-
-            <h1 class="h3 mb-3 font-weight-normal">Registrarse</h1>
-
-            <label for="inputEmail" class="sr-only">Email</label>
-            <input type="text" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
-            <!--Pongo ese input como text porque si lo pongo como email ya bootstrap nos hace la gracia de comprobar si es email-->
-
-            <label for="inputPassword" class="sr-only">Contraseña</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
-
-            <label for="inputMatricula" class="sr-only">Matrícula</label>
-            <input type="text" id="inputMatricula" class="form-control" placeholder="Matricula" required>
-
-            <label for="credencial" class="sr-only">DNI-CIF</label>
-            <input type="text" id="credencial" class="form-control" placeholder="NIF-CIF" required>
-
-            <button class="btn btn-lg btn-primary btn-block" type="submit">¡Registrarse!</button>
-            
-          </form>
+          <h1 class="h3 mb-3 font-weight-normal">Registrarse</h1>
+          <input type="text" id="inputEmail" class="form-control mt-2" placeholder="Email" required autofocus>
+          <input type="password" id="inputPassword" class="form-control mt-2" placeholder="Contraseña" required>
+          <input type="text" id="inputMatricula" class="form-control mt-2" placeholder="Matricula" required>
+          <input type="text" id="credencial" class="form-control mt-2" placeholder="NIF/CIF" required>
+          <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Enviar</button>
+        </form>
+      </div>
+      <div class="col-sm-4"></div>
     </div>
-   
-  </body>
+  </div>
+</body>
 </html>
+
+<!--
+<form class="form-signin" action="php/signup_infractor.php" method="GET">
+
+      <h1 class="h3 mb-3 font-weight-normal">Registrarse</h1>
+
+      <label for="inputEmail" class="sr-only">Email</label>
+      <input type="text" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+
+      <label for="inputPassword" class="sr-only">Contraseña</label>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
+
+      <label for="inputMatricula" class="sr-only">Matrícula</label>
+      <input type="text" id="inputMatricula" class="form-control" placeholder="Matricula" required>
+
+      <label for="credencial" class="sr-only">DNI-CIF</label>
+      <input type="text" id="credencial" class="form-control" placeholder="NIF-CIF" required>
+
+      <button class="btn btn-lg btn-primary btn-block" type="submit">¡Registrarse!</button>
+    </form>
+
+-->
