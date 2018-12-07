@@ -42,7 +42,7 @@ CREATE TABLE `admins` (
 --
 
 CREATE TABLE `coches` (
-  `n_bastidor` int(50) NOT NULL,
+  `n_bastidor` varchar(50) NOT NULL,
   `matricula` varchar(10) NOT NULL,
   `year` int(11) NOT NULL,
   `color` varchar(50) NOT NULL,
