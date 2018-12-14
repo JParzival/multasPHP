@@ -65,7 +65,7 @@
                 foreach ($arrayMultas as $multa)
                 {
                     ++$nrow;
-                    //$idMulta = $multa["idMulta"];
+                    $idMulta = $multa["idMulta"];
                     $razon = $multa["razon"];
                     $fecha = $multa["fecha"];
                     $reclamada = $multa["reclamada"];
