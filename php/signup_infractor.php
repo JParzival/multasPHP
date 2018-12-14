@@ -30,7 +30,7 @@
     }
     else
     {
-        if (strlen($inputCredencial) != 10)
+        if (strlen($inputCredencial) != 9)
         {
             print("El credencial introducido no es valido, se te redireccionará en breve.");
             header("refresh: 5; url=../signup.html");
