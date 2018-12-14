@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -59,6 +63,12 @@
           </thead>
           <tbody>
             <?php
+                if (!isset($_SESSION["credencial"]))
+                {
+                    header("location: ../login_infractor.html");
+                    return;
+                }
+                
                 include "obtener_multas_infractor.php";
 
                 $nrow = 0;

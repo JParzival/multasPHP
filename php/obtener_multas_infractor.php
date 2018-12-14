@@ -1,6 +1,7 @@
 <?php
 
-    session_start();
+    if (session_status() == PHP_SESSION_NONE)
+        session_start();
 
     $credencial = isset($_SESSION["credencial"]) ? $_SESSION["credencial"] : null;
     if ($credencial == null)
