@@ -46,7 +46,8 @@ CREATE TABLE `coches` (
   `matricula` varchar(10) NOT NULL,
   `year` int(11) NOT NULL,
   `color` varchar(50) NOT NULL,
-  `potencia_cv` int(4) NOT NULL
+  `potencia_cv` int(4) NOT NULL,
+  `credencial` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -75,7 +76,8 @@ CREATE TABLE `multas` (
   `razon` varchar(255) NOT NULL,
   `fecha` date NOT NULL,
   `reclamada` tinyint(1) NOT NULL DEFAULT '0',
-  `direccion` varchar(255) NOT NULL
+  `direccion` varchar(255) NOT NULL,
+  `n_bastidor` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
