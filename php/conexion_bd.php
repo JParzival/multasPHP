@@ -1,5 +1,4 @@
 <?php
-
     ## Credenciales de la base de datos
 
     $user = 'root';
