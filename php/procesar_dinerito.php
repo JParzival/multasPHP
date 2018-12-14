@@ -6,7 +6,7 @@
     
     include 'conexion_bd.php';
     
-    $consulta = mysqli_query ($conexion, "UPDATE multas SET ");
-    $nfilas = mysqli_num_rows ($consulta);
-    
+    mysqli_query ($conexion, "UPDATE multas SET estado = 2 where id = $id_multa") or die ("Hubo un poblema al realizar el pago.");
+    header("refresh: 3; url=../pago_realizado.html");
+        
 ?>
