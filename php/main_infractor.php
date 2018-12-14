@@ -97,7 +97,8 @@
                     echo "<td>$precio €</td>";
                     echo "<td>$estadoString</td>";
                     echo "<td>";
-                    echo "  <form action='obtener_detalles_multa.php?multa=$idMulta' method='POST' ENCTYPE='multipart/form-data'>";
+                    echo "  <form action='obtener_detalles_multa.php' method='POST' ENCTYPE='multipart/form-data'>";
+                    echo "    <input type='hidden' name='multa' value='$idMulta'>";
                     echo "    <input class='btn btn-primary' type='submit' value='Detalles Multa'>";
                     echo "  </form>";
                     echo "</td>";

@@ -2,14 +2,14 @@
 
     ## Obtenemos la id de la multa de la pantalla anterior.
 
-    $id_multa = $_GET['multa'];
+    $id_multa = isset($_POST['multa']) ? $_POST['multa'] : null;
     
     include 'conexion_bd.php';
     
-    $consulta = mysqli_query ($conexion, "SELECT FECHA, RAZON, LUGAR, PRECIO, PAGO FROM MULTAS WHERE ID = '$id_multa'") or die ("Problemas en consulta");
-    $nfilas = mysqli_num_rows ($consulta);
+    $consulta = mysqli_query ($conexion, "SELECT fecha, razon, reclamada, direccion, precio, estado, n_bastidor FROM multas WHERE id = '$id_multa'");
+    $nfilas = mysqli_num_rows($consulta);
     
-    if($nfilas == 0)
+    if ($nfilas == 0)
     {
         print("Excepción encontrando multa, ninguna encontrada");
         header("refresh: 3; url:../index.html");
@@ -29,10 +29,10 @@
     {
         $fila = mysqli_fetch_array($consulta);
 
-        print($fila['FECHA']);
-        print($fila['RAZON']);
-        print($fila['LUGAR']);
-        print($fila['PRECIO']);
+        print($fila['fecha']);
+        print($fila['razon']);
+        print($fila['direccion']);
+        print($fila['precio']);
         
     }
     
