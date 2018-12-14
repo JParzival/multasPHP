@@ -6,7 +6,7 @@
     
     include 'conexion_bd.php';
     
-    $consulta = mysqli_query ($conexion, "SELECT FECHA, RAZON, LUGAR, PRECIO, PAGO FROM MULTAS WHERE ID = '$id_multa'");
+    $consulta = mysqli_query ($conexion, "SELECT FECHA, RAZON, LUGAR, PRECIO, PAGO FROM MULTAS WHERE ID = '$id_multa'") or die ("Problemas en consulta");
     $nfilas = mysqli_num_rows ($consulta);
     
     if($nfilas == 0)
@@ -15,6 +15,7 @@
         header("refresh: 3; url:../index.html");
         
     }
+
     if($nfilas == 2)
     {
         print("Excepción encontrando multa, más de una encontrada");
