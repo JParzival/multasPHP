@@ -77,6 +77,8 @@ CREATE TABLE `multas` (
   `fecha` date NOT NULL,
   `reclamada` tinyint(1) NOT NULL DEFAULT '0',
   `direccion` varchar(255) NOT NULL,
+  `precio` float(5) NOT NULL,
+  `estado` int(1) NOT NULL,
   `n_bastidor` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

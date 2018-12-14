@@ -3,7 +3,7 @@
 
     $user = 'root';
     $contrasena = '';
-    $ip = 'localhost:3306';
+    $ip = 'localhost';
     $database = 'database_multas';
 
     ## Hacemos la conexión pasándole los credenciales
