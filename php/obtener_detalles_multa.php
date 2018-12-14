@@ -29,8 +29,6 @@
     {
         $fila = mysqli_fetch_array($consulta);
 
-
-
         print("<b>Fecha: </b> ".$fila['fecha']);
         print("<br> <b>Razón: </b> ".$fila['razon']);
         print("<br> <b>Dirección: </b> ".$fila['direccion']);
