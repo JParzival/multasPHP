@@ -23,4 +23,17 @@
 
     ## Esto significa que lo hemos hecho bien y que por lo tanto ahora podremos recuperar los resultados de la consulta.
 
+    $i = 0
+    for($i; $i < $nfilas; $i++)
+    {
+        $fila = mysqli_fetch_array($consulta);
+
+        echo("$fila['FECHA']")
+        echo("$fila['RAZON']")
+        echo("$fila['LUGAR']")
+        echo("$fila['PRECIO']")
+        
+    }
+    
+
     

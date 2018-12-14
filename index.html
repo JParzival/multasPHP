@@ -38,6 +38,7 @@
       </ul>
     </div>
   </nav>
+
   <div class="container mt-5">
     <div class="row">
       <div class="col-md-1"></div>
@@ -64,8 +65,13 @@
               <td>Salamanca</td>
               <td>150€</td>
               <td>No pagado</td>
-              <td><a href="detalles_multa.html">Detalles multa</a></td>
+              <td>
+                <form action="php/obtener_detalles_multa.php" method="POST" ENCTYPE="multipart/form-data">
+                  <input class="btn btn-primary" type="submit" value="Detalles Multa">
+                </form>
+              </td>
             </tr>
+            
             <tr>
               <th scope="row">2</th>
               <td>28-02-2018</td>
@@ -73,8 +79,13 @@
               <td>Salamanca</td>
               <td>50€</td>
               <td>Pagado</td>
-              <td><a href="detalles_multa.html">Detalles multa</a></td>
+              <td>
+                <form action="php/obtener_detalles_multa.php" method="POST" ENCTYPE="multipart/form-data">
+                  <input class="btn btn-primary" type="submit" value="Detalles Multa">
+                </form>
+              </td>
             </tr>
+            
             <tr>
               <th scope="row">3</th>
               <td>28-02-2018</td>
@@ -82,7 +93,11 @@
               <td>Salamanca</td>
               <td>500€</td>
               <td>Procesando pago</td>
-              <td><a href="detalles_multa.html">Detalles multa</a></td>
+              <td>
+                <form action="php/obtener_detalles_multa.php" method="POST" ENCTYPE="multipart/form-data">
+                  <input class="btn btn-primary" type="submit" value="Detalles Multa">
+                </form>
+              </td>
             </tr>
           </tbody>
         </table>

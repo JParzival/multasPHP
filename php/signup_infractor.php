@@ -108,7 +108,7 @@
 
         mysqli_query($conexion, "INSERT INTO infractor(credencial, password, nombre, apellidos, tlf, f_exp_carnet) VALUES
             ('$inputCredencial', '$inputPassword', '$inputNombre', '$inputApellidos', '$inputTlf', '$fechaDB')") or die("Error al guardar los datos en la base de datos.");
-        echo "Exito al crear el usuario, seras redirigido a la pagina de inicio.";
-        header("refresh: 5; url=../login_infractor.html");
+        echo "Éxito al crear el usuario, serás redirigido a la página de inicio.";
+        header("refresh: 3; url=../login_infractor.html");
     }
 ?>
