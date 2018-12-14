@@ -29,12 +29,21 @@
     {
         $fila = mysqli_fetch_array($consulta);
 
-        print($fila['fecha']);
-        print($fila['razon']);
-        print($fila['direccion']);
-        print($fila['precio']);
+
+
+        print("<b>Fecha: </b> ".$fila['fecha']);
+        print("<br> <b>Razón: </b> ".$fila['razon']);
+        print("<br> <b>Dirección: </b> ".$fila['direccion']);
+        print("<br> <b>Precio: </b> ".$fila['precio']);
+        print("<br> <b>Reclamada: </b> ".$fila['reclamada']);
+        print("<br> <b>Estado: </b> ".$fila['estado']);
+        print("<br> <b>Número Bastidor: </b> ".$fila['n_bastidor']);
         
     }
+
+    print("<br> <form action=\"../formas_pago.html\" method=\"POST\" ENCTYPE=\"multipart/form-data\"> <input type=\"Submit\" value=\"Pagar\" > </form>");
+
+    $_SESSION['id_multa'] = $id_multa;
     
 
     
