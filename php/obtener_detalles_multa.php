@@ -29,13 +29,30 @@
     {
         $fila = mysqli_fetch_array($consulta);
 
-        print("<b>Fecha: </b> ".$fila['fecha']);
+        print("<b>Número Bastidor Multado: </b> ".$fila['n_bastidor']);
+
+        print("<br> <b>Fecha: </b> ".$fila['fecha']);
         print("<br> <b>Razón: </b> ".$fila['razon']);
         print("<br> <b>Dirección: </b> ".$fila['direccion']);
         print("<br> <b>Precio: </b> ".$fila['precio']);
-        print("<br> <b>Reclamada: </b> ".$fila['reclamada']);
-        print("<br> <b>Estado: </b> ".$fila['estado']);
-        print("<br> <b>Número Bastidor: </b> ".$fila['n_bastidor']);
+
+        switch($fila['reclamada'])
+        {
+            case 0: print("<br> <b>Reclamada: </b> No ha sido reclamada");
+                    break;
+            case 1: print("<br> <b>Reclamada: </b> Ha sido reclamada");
+                    break;
+        }
+
+        switch($fila['estado'])
+        {
+            case 0: print("<br> <b>Estado: </b> No Pagado");
+                    break;
+            case 1: print("<br> <b>Estado: </b> Procesando Pago");
+                    break;
+            case 2: print("<br> <b>Estado: </b> Pagada");
+                    break;
+        }
         
     }
 
