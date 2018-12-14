@@ -2,7 +2,7 @@
 
     ## Obtenemos la id de la multa de la pantalla anterior.
 
-    $id_multa = $_SERVER['multa'];
+    $id_multa = $_GET['multa'];
     
     include 'conexion_bd.php';
     
@@ -11,27 +11,27 @@
     
     if($nfilas == 0)
     {
-        print("Excepción encontrando multa");
+        print("Excepción encontrando multa, ninguna encontrada");
         header("refresh: 3; url:../index.html");
         
     }
     if($nfilas == 2)
     {
-        print("Excepción encontrando multa");
+        print("Excepción encontrando multa, más de una encontrada");
         header("refresh: 3; url=../index.html");
     }
 
     ## Esto significa que lo hemos hecho bien y que por lo tanto ahora podremos recuperar los resultados de la consulta.
 
-    $i = 0
+    $i = 0;
     for($i; $i < $nfilas; $i++)
     {
         $fila = mysqli_fetch_array($consulta);
 
-        echo("$fila['FECHA']")
-        echo("$fila['RAZON']")
-        echo("$fila['LUGAR']")
-        echo("$fila['PRECIO']")
+        print($fila['FECHA']);
+        print($fila['RAZON']);
+        print($fila['LUGAR']);
+        print($fila['PRECIO']);
         
     }
     
