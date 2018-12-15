@@ -1,7 +1,7 @@
 <?php
-session_start();
+  session_start();
 
-echo $_SESSION['id_multa'];
+  echo $_SESSION['id_multa'];
 ?>
 <!doctype html>
 <html lang="es">
