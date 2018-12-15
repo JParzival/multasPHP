@@ -47,5 +47,5 @@
         header("refresh: 5; url=../login_$typeLogin.html");
     }
     else
-        header("location: ../login_ok.html");
+        header("location: login_ok.php");
 ?>
