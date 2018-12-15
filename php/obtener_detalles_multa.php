@@ -3,7 +3,7 @@
     ## Obtenemos la id de la multa de la pantalla anterior.
 
     $id_multa = isset($_POST['multa']) ? $_POST['multa'] : null;
-    
+    echo $id_multa;
     include 'conexion_bd.php';
     
     $consulta = mysqli_query ($conexion, "SELECT fecha, razon, reclamada, direccion, precio, estado, n_bastidor FROM multas WHERE id = '$id_multa'");
@@ -67,6 +67,5 @@
     }
 
     $_SESSION['id_multa'] = $id_multa;
-    
 
 ?>    
