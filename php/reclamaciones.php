@@ -11,12 +11,9 @@
     <table class="table mt-4">
         <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">Fecha</th>
-            <th scope="col">Razón</th>
-            <th scope="col">Lugar</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Acciones</th>
+            <th scope="col">Id</th>
+            <th scope="col">Contacto</th>
+            <th scope="col">Detalles</th>
         </tr>
         </thead>
         <tbody>
@@ -31,28 +28,21 @@
             
             include "obtener_reclamaciones.php";
 
-            $nrow = 0;
             foreach ($arrayMultas as $multa)
             {
-                ++$nrow;
                 $idMulta = $multa["idMulta"];
-                $razon = $multa["razon"];
-                $fecha = $multa["fecha"];
-                //$reclamada = $multa["reclamada"];
-                $precio = $multa["precio"];
-                //$estado = $multa["estado"];
-                //$nbastidor = $multa["n_bastidor"];
-                $direccion = $multa["direccion"];
 
-                echo "<th scope='row'>$nrow</th>";
-                echo "<td>$fecha</td>";
-                echo "<td>$razon</td>";
-                echo "<td>$direccion</td>";
-                echo "<td>$precio €</td>";
+                echo "<th scope='row'>$idMulta</th>";
                 echo "<td>";
                 echo "  <form action='detalles_reclamacion.php' method='POST' ENCTYPE='multipart/form-data'>";
                 echo "    <input type='hidden' name='multa' value='$idMulta'>";
                 echo "    <input class='btn btn-primary' type='submit' value='Detalles reclamacion'>";
+                echo "  </form>";
+                echo "</td>";
+                echo "<td>";
+                echo "  <form action='detalles_multa_admin.php' method='POST' ENCTYPE='multipart/form-data'>";
+                echo "    <input type='hidden' name='multa' value='$idMulta'>";
+                echo "    <input class='btn btn-primary' type='submit' value='Detalles multa'>";
                 echo "  </form>";
                 echo "</td>";
                 echo "</tr>";
