@@ -118,5 +118,12 @@
             ('$inputCredencial', '$inputPassword', '$inputNombre', '$inputApellidos', '$inputTlf', '$fechaDB')") or die("Error al guardar los datos en la base de datos.");
         echo "Éxito al crear el usuario, serás redirigido a la página de inicio.";
         header("refresh: 3; url=../login_infractor.html");
+
+        // Si es correcto borramos las variables para que no se vuelvan a mostrar en signup
+        $_SESSION['inputCredencial'] = null;
+        $_SESSION['inputNombre'] = null;
+        $_SESSION['inputApellidos'] = null;
+        $_SESSION['inputTlf'] = null;
+        $_SESSION['inputFechaExpCarnet'] = null;
     }
 ?>
