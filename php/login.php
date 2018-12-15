@@ -17,6 +17,23 @@
 
     $_SESSION["typeLogin"] = $_POST["typeLogin"];
 
+    if(strlen($_POST['password']) < 5)
+    {
+        print("La contraseña es demasiado corta.");
+
+        if($typeLogin == "infractor")
+        {
+            header("refresh: 3; url=../login_infractor.html");
+            return;
+        }
+        else
+        {
+            header("refresh: 3; url=../login_admin.html");
+            return;
+        }
+        
+    }
+
     $pass = isset($_POST['password']) ? $_POST['password'] : null;
     $credencial = isset($_POST['credencial']) ? $_POST['credencial'] : null;
 
