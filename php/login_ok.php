@@ -31,7 +31,7 @@
             }
             else
             {
-                echo "<a href=\"php/main_infractor.php\">Continuar</a>"
+                echo "<a href=\"php/main_infractor.php\">Continuar</a>";
             }
         ?>
         
