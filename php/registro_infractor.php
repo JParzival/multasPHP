@@ -99,12 +99,14 @@
         if ($error)
         {
             echo "Existen errores en los datos de registro, se te redireccionará en breve.";
+            header("refresh: 3; url=signup.php");
             return;
         }
 
         $fechaDB = $arrayFecha[2]."-".$arrayFecha[1]."-".$arrayFecha[0];
 
         ## Aquí ha pasado la criba, ahora tendremos que meterlo en la DB
+
         include "conexion_bd.php";
 
         $inputCredencial = mysqli_real_escape_string($conexion, $inputCredencial);
@@ -114,12 +116,15 @@
         $inputTlf = mysqli_real_escape_string($conexion, $inputTlf);
         $fechaDB = mysqli_real_escape_string($conexion, $fechaDB);
 
-        mysqli_query($conexion, "INSERT INTO infractor(credencial, password, nombre, apellidos, tlf, f_exp_carnet) VALUES
-            ('$inputCredencial', '$inputPassword', '$inputNombre', '$inputApellidos', '$inputTlf', '$fechaDB')") or die("Error al guardar los datos en la base de datos.");
+        mysqli_query($conexion, "INSERT INTO infractor(credencial, password, nombre, apellidos, tlf, f_exp_carnet) 
+                                 VALUES('$inputCredencial', '$inputPassword', '$inputNombre', '$inputApellidos', '$inputTlf', '$fechaDB')") 
+        or die("Error al guardar los datos en la base de datos.");
+
         echo "Éxito al crear el usuario, serás redirigido a la página de inicio.";
         header("refresh: 3; url=../login_infractor.html");
 
         // Si es correcto borramos las variables para que no se vuelvan a mostrar en signup
+        
         $_SESSION['inputCredencial'] = null;
         $_SESSION['inputNombre'] = null;
         $_SESSION['inputApellidos'] = null;
