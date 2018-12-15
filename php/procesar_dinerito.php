@@ -1,4 +1,5 @@
 <?php
+
     session_start();
     ## Obtenemos la id de la multa de la pantalla anterior.
 
@@ -7,6 +8,6 @@
     include 'conexion_bd.php';
     
     mysqli_query ($conexion, "UPDATE multas SET estado = 2 WHERE id = $id_multa") or die ("Hubo un poblema al realizar el pago.");
-    header("Location: pago_realizado.php");
+    header("location: pago_realizado.php");
         
 ?>
