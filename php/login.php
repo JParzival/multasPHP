@@ -26,6 +26,8 @@
     }
 
     $_SESSION['credencial'] = $credencial;
+    if ($typeLogin == "admin")
+        $_SESSION["isAdmin"] = true;
 
     include 'conexion_bd.php';
     
