@@ -8,7 +8,7 @@
         return;
     }
 
-    $idMulta = isset($_POST["multa"]) ? $_POST["multa"] : null;
+    $idMulta = isset($_POST["recMulta"]) ? $_POST["recMulta"] : null;
     if ($idMulta == null)
     {
         header("location: reclamaciones.php");
