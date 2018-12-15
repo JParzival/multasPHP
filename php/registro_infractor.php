@@ -25,24 +25,26 @@
     {
         print("No se han proporcionado los parametros requeridos. Se te redireccionará en breve.");
         //sleep(5);
-        //header("location: ../signup.html");
-        header("refresh: 5; url=../signup.html");
+        //header("location: signup.php");
+        header("refresh: 5; url=signup.php");
     }
     else
     {
+        $error = false;
+
         if (strlen($inputCredencial) != 9)
         {
-            print("El credencial introducido no es valido, se te redireccionará en breve.");
-            header("refresh: 5; url=../signup.html");
+            print("El credencial introducido no es valido.<br>");
+            header("refresh: 5; url=signup.php");
             $_SESSION['inputCredencial'] = null;
-            return;
+            $error = true;
         }
 
         if (strlen($inputPassword) < 5)
         {
-            print("La contraseña proporcionada es muy corta, se te redireccionará en breve.");
-            header("refresh: 5; url=../signup.html");
-            return;
+            print("La contraseña proporcionada es muy corta.<br>");
+            header("refresh: 5; url=signup.php");
+            $error = true;
         }
 
         function comprobarSiTieneNumeros($string)
@@ -55,42 +57,48 @@
 
         if (!comprobarSiTieneNumeros($inputNombre))
         {
-            print("El nombre no puede contener números, se te redireccionará en breve.");
-            header("refresh: 5; url=../signup.html");
+            print("El nombre no puede contener números.<br>");
+            header("refresh: 5; url=signup.php");
             $_SESSION['inputNombre'] = null;
-            return;
+            $error = true;
         }
 
         if (!comprobarSiTieneNumeros($inputApellidos))
         {
-            print("Los apellidos no pueden contener números, se te redireccionará en breve.");
-            header("refresh: 5; url=../signup.html");
+            print("Los apellidos no pueden contener números.<br>");
+            header("refresh: 5; url=signup.php");
             $_SESSION['inputApellidos'] = null;
-            return;
+            $error = true;
         }
 
         if (strlen($inputTlf) != 9)
         {
-            print("El número de telefono no es valido, se te redireccionará en breve.");
-            header("refresh: 5; url=../signup.html");
+            print("El número de telefono no es valido.<br>");
+            header("refresh: 5; url=signup.php");
             $_SESSION['inputTlf'] = null;
-            return;
+            $error = true;
         }
 
         $arrayFecha = explode("-", $inputFechaExpCarnet);
         if (sizeof($arrayFecha) != 3)
         {
-            print("La fecha introducida no es valida, se te redireccionará en breve.");
-            header("refresh: 5; url=../signup.html");
+            print("La fecha introducida no es valida.<br>");
+            header("refresh: 5; url=signup.php");
             $_SESSION['inputFechaExpCarnet'] = null;
-            return;
+            $error = true;
         }
 
         if (!checkdate($arrayFecha[1], $arrayFecha[0], $arrayFecha[2]))
         {
-            print("La fecha introducida no es valida, se te redireccionará en breve.");
-            header("refresh: 5; url=../signup.html");
+            print("La fecha introducida no es valida.<br>");
+            header("refresh: 5; url=signup.php");
             $_SESSION['inputFechaExpCarnet'] = null;
+            $error = true;
+        }
+
+        if ($error)
+        {
+            echo "Existen errores en los datos de registro, se te redireccionará en breve.";
             return;
         }
 
