@@ -26,12 +26,12 @@
 
             if($tipo == "admin")
             {
-                echo "<a href=\"php/main_admin.php\">Continuar</a>";
+                echo "<a href=\"main_admin.php\">Continuar</a>";
                 
             }
             else
             {
-                echo "<a href=\"php/main_infractor.php\">Continuar</a>";
+                echo "<a href=\"main_infractor.php\">Continuar</a>";
             }
         ?>
         
