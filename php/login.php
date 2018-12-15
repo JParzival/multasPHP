@@ -15,6 +15,8 @@
         return;
     }
 
+    $_SESSION["typeLogin"] = $_POST["typeLogin"];
+
     $pass = isset($_POST['password']) ? $_POST['password'] : null;
     $credencial = isset($_POST['credencial']) ? $_POST['credencial'] : null;
 
