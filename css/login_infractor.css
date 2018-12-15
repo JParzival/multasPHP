@@ -2,7 +2,9 @@ html,
 body 
 {
   height: 100%;
-  background-image: url("https://www.formacionyestudios.com/wp-content/uploads/2018/10/policia-830x623.png");
+  background-image: url("http://wnynewsnow.com/wp-content/uploads/2017/06/Police-lights-background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #h1
 {
