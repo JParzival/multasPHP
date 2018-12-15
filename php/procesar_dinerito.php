@@ -7,6 +7,6 @@
     include 'conexion_bd.php';
     
     mysqli_query ($conexion, "UPDATE multas SET estado = 2 WHERE id = $id_multa") or die ("Hubo un poblema al realizar el pago.");
-    header("refresh: 3; url=../pago_realizado.php");
+    header("Location: pago_realizado.php");
         
 ?>

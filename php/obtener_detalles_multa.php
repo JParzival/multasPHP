@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
     ## Obtenemos la id de la multa de la pantalla anterior.
 
     $id_multa = isset($_POST['multa']) ? $_POST['multa'] : null;
@@ -68,4 +68,4 @@
 
     $_SESSION['id_multa'] = $id_multa;
 
-?>    
+?>     
