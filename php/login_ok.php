@@ -16,7 +16,22 @@
     <body>
         <h4>Login correcto!</h4>
         <br>
-        <a href="php/main_infractor.php">Continuar</a>
 
+        <?php
+            session_start();
+
+            $tipo = $_SESSION["typeLogin"];
+
+            if($tipo == "admin")
+            {
+                echo "<a href=\"php/main_admin.php\">Continuar</a>";
+                
+            }
+            else
+            {
+                echo "<a href=\"php/main_infractor.php\">Continuar</a>"
+            }
+        ?>
+        
     </body>
 </html>

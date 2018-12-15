@@ -58,7 +58,7 @@
               <th scope="col">Lugar</th>
               <th scope="col">Precio</th>
               <th scope="col">Estado pago</th>
-              <th scope="col">Acciones</th>
+              
             </tr>
           </thead>
           <tbody>
