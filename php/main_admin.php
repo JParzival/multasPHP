@@ -53,7 +53,7 @@
           </thead>
           <tbody>
             <?php
-                if (!isset($_SESSION["credencial"]))
+                if (!isset($_SESSION["credencial"]) || !isset($_SESSION["isAdmin"]))
                 {
                     header("location: ../login_admin.html");
                     return;
