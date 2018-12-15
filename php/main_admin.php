@@ -96,6 +96,12 @@
                     echo "<td>$direccion</td>";
                     echo "<td>$precio €</td>";
                     echo "<td>$estadoString</td>";
+                    echo "<td>";
+                    echo "  <form action='detalles_multa_admin.php' method='POST' ENCTYPE='multipart/form-data'>";
+                    echo "    <input type='hidden' name='detMulta' value='$idMulta'>";
+                    echo "    <input class='btn btn-primary' type='submit' value='Detalles multa'>";
+                    echo "  </form>";
+                    echo "</td>";
                     echo "</tr>";
                 }
             ?>
