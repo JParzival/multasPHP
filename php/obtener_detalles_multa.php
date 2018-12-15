@@ -56,7 +56,15 @@
         
     }
 
-    print("<br> <form action=\"../formas_pago.html\" method=\"POST\" ENCTYPE=\"multipart/form-data\"> <input type=\"Submit\" value=\"Pagar\" > </form>");
+    if ($fila['estado'] == "2")
+    {
+        print("<br> <form action=\"../formas_pago.html\" method=\"POST\" ENCTYPE=\"multipart/form-data\"> <input type=\"Submit\" value=\"Pagar\" disabled> </form>");
+        printf("<br><a href='main_infractor.php'>Volver atrás</a>");
+    }
+    else
+    {
+        print("<br> <form action=\"../formas_pago.html\" method=\"POST\" ENCTYPE=\"multipart/form-data\"> <input type=\"Submit\" value=\"Pagar\"> </form>");
+    }
 
     $_SESSION['id_multa'] = $id_multa;
     
