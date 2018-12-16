@@ -107,7 +107,11 @@
             ?>
           </tbody>
         </table>
-
+        <?php
+          echo "<div style='width: 100%;' class='text-center mt-5'>";
+          echo "<a class='btn btn-primary' href='reclamaciones.php' role='button'>Ver reclamaciones</a>";
+          echo "</div>";
+        ?>
       </div>
     </div>
   </div>

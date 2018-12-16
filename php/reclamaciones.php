@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -18,7 +21,6 @@
         </thead>
         <tbody>
         <?php
-            session_start();
 
             if (!isset($_SESSION["credencial"]) || !isset($_SESSION["isAdmin"]))
             {
