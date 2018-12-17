@@ -11,6 +11,14 @@
 
     function mostrarFormulario()
     {
+        include "conexion_bd.php";
+        $arrayBastidores = array();
+        $nbastidoresResult = mysqli_query($conexion, "SELECT n_bastidor FROM coches");
+        
+        if (mysqli_num_rows($nbastidoresResult) > 0)
+            while ($row = mysqli_fetch_array($nbastidoresResult))
+                array_push($arrayBastidores, $row["n_bastidor"]);
+
         $fecha = isset($_SESSION["nmFecha"]) ? $_SESSION["nmFecha"] : "";
         $razon = isset($_SESSION["nmRazon"]) ? $_SESSION["nmRazon"] : "";
         $direccion = isset($_SESSION["nmDireccion"]) ? $_SESSION["nmDireccion"] : "";
@@ -21,22 +29,32 @@
 
         <form action="introducir_multa.php" enctype="application/x-www-form-urlencoded" method="POST">
 
-            Razón Multa: <input name="razon" type="text" value="$razon">
+            Razón Multa: <input name="razon" type="text" value="$razon" required>
             <br>
-            Fecha: <input name="fecha" type="date" value="$fecha">
+            Fecha: <input name="fecha" type="date" value="$fecha" required>
             <br>
-            Dirección: <input name="direccion" type="text" value="$direccion">
+            Dirección: <input name="direccion" type="text" value="$direccion" required>
             <br>
-            Precio: <input name="precio" type="number" value="$precio">
+            Precio: <input name="precio" type="number" value="$precio" required>
             <br>
-            Número de Bastidor: <input name="numeroBastidor" type="number" value="$n_bastidor">
-            <br>
-            <input type="submit" value="Registrar Multa">
-
-        </form>
 FORM;
-
         print($formulario);
+
+        echo "Número de bastidor: <select name='numeroBastidor' required>";
+        echo "<option disabled selected value>";
+        foreach ($arrayBastidores as $bastidor)
+        {
+            if ($bastidor == $n_bastidor)
+                echo "<option value='$bastidor' selected> $bastidor</option>";
+            else
+                echo "<option value='$bastidor'> $bastidor </option>";
+        }
+
+        echo "</select>";
+
+        echo "<br><input type='submit' value='Registrar Multa'>";
+
+        echo "</form>";
     } 
 
     if ($_SERVER["REQUEST_METHOD"] != "POST")  # Quiere obtener el formulario

@@ -16,19 +16,19 @@
 
         <form action="introducir_coche.php" method="POST" enctype="application/x-www-form-urlencoded">
         
-            Color: <input type="text" name="color" value="$color">
+            Color: <input type="text" name="color" value="$color" required>
             <br>
-            Matrícula: <input type="text" name="matricula" value="$matricula">
+            Matrícula: <input type="text" name="matricula" value="$matricula" required>
             <br>
-            Número Bastidor: <input type="number" name="numeroBastidor" value="$numeroBastidor">
+            Número Bastidor: <input type="number" name="numeroBastidor" value="$numeroBastidor" required>
             <br>
-            Año: <input type="number" name="ano" value="$año">
+            Año: <input type="number" name="ano" value="$año" required>
             <br>
-            Potencia (Caballos): <input type="number" name="potencia" value="$potencia">
+            Potencia (Caballos): <input type="number" name="potencia" value="$potencia" required>
 FORM;
         echo $formulario;
         if ($isAdmin)
-            echo "<br> DNI: <input type='text' name='dni' value = '$dni'/>";
+            echo "<br> DNI: <input type='text' name='dni' value = '$dni' required>";
 
         echo "<br><input type='submit' value='Registrar Coche'> </form>";
     }
