@@ -9,6 +9,7 @@
 
     $inputCredencial = isset($_POST['inputCredencial']) ? $_POST['inputCredencial'] : null;
     $inputPassword = isset($_POST['inputPassword']) ? $_POST['inputPassword'] : null;
+    $inputPassword2 = isset($_POST['inputPassword2']) ? $_POST['inputPassword2'] : null;
     $inputNombre = isset($_POST['inputNombre']) ? $_POST['inputNombre'] : null;
     $inputApellidos = isset($_POST['inputApellidos']) ? $_POST['inputApellidos'] : null;
     $inputTlf = isset($_POST['inputTlf']) ? $_POST['inputTlf'] : null;
@@ -21,7 +22,7 @@
     $_SESSION['inputFechaExpCarnet'] = $inputFechaExpCarnet;
 
     if ($inputCredencial == null || $inputPassword == null || $inputNombre == null || $inputApellidos == null ||
-        $inputTlf == null || $inputFechaExpCarnet == null)
+        $inputTlf == null || $inputFechaExpCarnet == null || $inputPassword2 == null)
     {
         print("No se han proporcionado los parametros requeridos. Se te redireccionará en breve.");
         //sleep(5);
@@ -35,7 +36,6 @@
         if (strlen($inputCredencial) != 9)
         {
             print("El credencial introducido no es valido.<br>");
-            header("refresh: 5; url=signup.php");
             $_SESSION['inputCredencial'] = null;
             $error = true;
         }
@@ -43,7 +43,12 @@
         if (strlen($inputPassword) < 5)
         {
             print("La contraseña proporcionada es muy corta.<br>");
-            header("refresh: 5; url=signup.php");
+            $error = true;
+        }
+
+        if (strcmp($inputPassword, $inputPassword2) != 0)
+        {
+            echo "Las contraseñas no coinciden.<br>";
             $error = true;
         }
 
@@ -58,7 +63,6 @@
         if (!comprobarSiTieneNumeros($inputNombre))
         {
             print("El nombre no puede contener números.<br>");
-            header("refresh: 5; url=signup.php");
             $_SESSION['inputNombre'] = null;
             $error = true;
         }
@@ -66,7 +70,6 @@
         if (!comprobarSiTieneNumeros($inputApellidos))
         {
             print("Los apellidos no pueden contener números.<br>");
-            header("refresh: 5; url=signup.php");
             $_SESSION['inputApellidos'] = null;
             $error = true;
         }
@@ -74,24 +77,23 @@
         if (strlen($inputTlf) != 9)
         {
             print("El número de telefono no es valido.<br>");
-            header("refresh: 5; url=signup.php");
             $_SESSION['inputTlf'] = null;
             $error = true;
         }
 
+        $fechaValida = true;
         $arrayFecha = explode("-", $inputFechaExpCarnet);
         if (sizeof($arrayFecha) != 3)
         {
+            $fechaValida = false;
             print("La fecha introducida no es valida.<br>");
-            header("refresh: 5; url=signup.php");
             $_SESSION['inputFechaExpCarnet'] = null;
             $error = true;
         }
 
-        if (!checkdate($arrayFecha[1], $arrayFecha[0], $arrayFecha[2]))
+        if ($fechaValida && !checkdate($arrayFecha[1], $arrayFecha[2], $arrayFecha[0]))
         {
             print("La fecha introducida no es valida.<br>");
-            header("refresh: 5; url=signup.php");
             $_SESSION['inputFechaExpCarnet'] = null;
             $error = true;
         }
@@ -99,11 +101,11 @@
         if ($error)
         {
             echo "Existen errores en los datos de registro, se te redireccionará en breve.";
-            header("refresh: 3; url=signup.php");
+            header("refresh: 10; url=signup.php");
             return;
         }
 
-        $fechaDB = $arrayFecha[2]."-".$arrayFecha[1]."-".$arrayFecha[0];
+        $fechaDB = $arrayFecha[0]."-".$arrayFecha[1]."-".$arrayFecha[2];
 
         ## Aquí ha pasado la criba, ahora tendremos que meterlo en la DB
 

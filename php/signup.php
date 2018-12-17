@@ -33,8 +33,9 @@
             echo "<input type='text' name='inputApellidos' class='form-control mt-2' placeholder='Apellidos' value='$inputApellidos' required>";
             echo "<input type='text' name='inputCredencial' class='form-control mt-2' placeholder='NIF/CIF' value='$inputCredencial' required autofocus>";
             echo "<input type='password' name='inputPassword' class='form-control mt-2' placeholder='Contraseña' required>";
+            echo "<input type='password' name='inputPassword2' class='form-control mt-2' placeholder='Repetir Contraseña' required>";
             echo "<input type='text' name='inputTlf' class='form-control mt-2' placeholder='Telefono' value='$inputTlf' required>";
-            echo "<input type='text' name='inputFechaExpCarnet' class='form-control mt-2' placeholder='Fecha de expedición del carnet dd-mm-yyyy' value='$inputFechaExpCarnet' required>";
+            echo "<input type='date' name='inputFechaExpCarnet' class='form-control mt-2' placeholder='Fecha de expedición del carnet dd-mm-yyyy' value='$inputFechaExpCarnet' required>";
           ?>
           
           <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Enviar</button>
