@@ -12,7 +12,7 @@
     $id_multa = isset($_POST['detMulta']) ? $_POST['detMulta'] : null;
     if ($id_multa == null)
     {
-        header("location: reclamaciones.php");
+        header("location: main_administrador.php");
         return;
     }
     

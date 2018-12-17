@@ -11,7 +11,7 @@
     $idMulta = isset($_POST["recMulta"]) ? $_POST["recMulta"] : null;
     if ($idMulta == null)
     {
-        header("location: reclamaciones.php");
+        header("location: main_administrador.php");
         return;
     }
 

@@ -13,13 +13,13 @@
     $accion = isset($_POST['accion']) ? $_POST['accion'] : null;
     if ($idMulta == null)
     {
-        header("location: reclamaciones.php");
+        header("location: main_administrador.php");
         return;
     }
 
     if ($accion == null || ($accion != 1 && $accion != 2))
     {
-        header("location: reclamaciones.php");
+        header("location: main_administrador.php");
         return;
     }
 
@@ -49,6 +49,6 @@
     {
         echo mysqli_error($conexion);
         echo "<br>Error al procesar la operación.";
-        header("refresh: 5; url=reclamaciones.php");
+        header("refresh: 5; url=main_administrador.php");
     }
 ?>
