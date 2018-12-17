@@ -27,6 +27,9 @@
           <a class="nav-link" href="index.html">Inicio</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="introducir_coche.php">Introducir Coche Nuevo</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="logout.php">Logout</a>
         </li>
       </ul>
@@ -52,6 +55,7 @@
             </tr>
           </thead>
           <tbody>
+
             <?php
                 if (!isset($_SESSION["credencial"]))
                 {
@@ -105,6 +109,7 @@
                     echo "</tr>";
                 }
             ?>
+
           </tbody>
         </table>
       </div>
