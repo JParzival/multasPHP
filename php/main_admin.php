@@ -40,6 +40,7 @@
         <h2>Administración de Multas</h2>
 
         <h5><a href="introducir_multa.php">Introducir Nueva Multa</a></h5>
+        <h5><a href="introducir_coche.php">Registrar nuevo coche</a></h5>
 
         <table class="table mt-4">
           <thead>

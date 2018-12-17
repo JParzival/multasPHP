@@ -57,7 +57,7 @@
           <tbody>
 
             <?php
-                if (!isset($_SESSION["credencial"]))
+                if (!isset($_SESSION["credencial"]) || isset($_SESSION["isAdmin"]))
                 {
                     header("location: ../login_infractor.html");
                     return;

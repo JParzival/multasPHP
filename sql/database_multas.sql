@@ -63,9 +63,9 @@ CREATE TABLE `coches` (
 --
 
 INSERT INTO `coches` (`n_bastidor`, `matricula`, `year`, `color`, `potencia_cv`, `credencial`) VALUES
-('123456789', '0000BBB', 2008, 'OCASO CREMOSO', 110, '012345678P'),
-('987654321', '0001BBB', 2009, 'OCASO CREMTITA', 101, '012345679P'),
-('135792468', '0002BBB', 2010, 'ROJO', 140, '012345678P');
+('123456789', '0000BBB', 2008, 'OCASO CREMOSO', 110, '12345678P'),
+('987654321', '0001BBB', 2009, 'OCASO CREMTITA', 101, '12345679P'),
+('135792468', '0002BBB', 2010, 'ROJO', 140, '12345678P');
 
 -- --------------------------------------------------------
 
@@ -87,8 +87,8 @@ CREATE TABLE `infractor` (
 --
 
 INSERT INTO `infractor` (`credencial`, `password`, `nombre`, `apellidos`, `tlf`, `f_exp_carnet`) VALUES
-('012345678P', 'PASSWORD', 'PRUEBA1', 'PRUEBAAPE1', 600000000, '1996-11-28'),
-('012345679P', 'PASSWORD', 'PRUEBA2', 'PRUEBAAPE2', 600000001, '1996-11-29');
+('12345678P', 'PASSWORD', 'PRUEBA1', 'PRUEBAAPE1', 600000000, '1996-11-28'),
+('12345679P', 'PASSWORD', 'PRUEBA2', 'PRUEBAAPE2', 600000001, '1996-11-29');
 
 -- --------------------------------------------------------
 
@@ -114,11 +114,11 @@ CREATE TABLE `multas` (
 --
 
 INSERT INTO `multas` (`id`, `razon`, `fecha`, `reclamada`, `direccion`, `precio`, `estado`, `n_bastidor`, `credencial`, `admin`) VALUES
-(1, 'Velocidad', '2018-12-01', 0, 'Direccion', 20.3, 0, '123456789', '012345678P', '123456789'),
-(2, 'Aparcamiento', '2018-11-04', 1, 'Direccion2', 10, 0, '987654321', '012345679P', '123456789'),
-(3, 'Saltarse un semaforo', '2012-12-12', 1, 'Direccion3', 2000, 0, '123456789', '012345678P', '123456789'),
-(4, 'Saltarse un stop', '2012-12-12', 1, 'Direccion4', 2000, 0, '987654321', '012345679P', '123456789'),
-(5, 'Aparcamiento', '2012-11-01', 0, 'Direccion5', 213, 1, '123456789', '012345678P', '123456789');
+(1, 'Velocidad', '2018-12-01', 0, 'Direccion', 20.3, 0, '123456789', '12345678P', '123456789'),
+(2, 'Aparcamiento', '2018-11-04', 1, 'Direccion2', 10, 0, '987654321', '12345679P', '123456789'),
+(3, 'Saltarse un semaforo', '2012-12-12', 1, 'Direccion3', 2000, 0, '123456789', '12345678P', '123456789'),
+(4, 'Saltarse un stop', '2012-12-12', 1, 'Direccion4', 2000, 0, '987654321', '12345679P', '123456789'),
+(5, 'Aparcamiento', '2012-11-01', 0, 'Direccion5', 213, 1, '123456789', '12345678P', '123456789');
 
 --
 -- Indexes for dumped tables

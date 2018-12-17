@@ -48,7 +48,6 @@
         print("<br> <b>Razón: </b> ".$fila['razon']);
         print("<br> <b>Dirección: </b> ".$fila['direccion']);
         print("<br> <b>Precio: </b> ".$fila['precio']);
-        print("<br> <a href=\"eliminarMulta.php\"> Eliminar Multa</a>")
 
         switch($fila['reclamada'])
         {
@@ -68,5 +67,6 @@
                     break;
         }
         
+        print("<br> <a href=\"eliminarMulta.php\"> Eliminar Multa</a>");
     }
 ?>
