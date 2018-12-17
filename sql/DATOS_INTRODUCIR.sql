@@ -4,7 +4,7 @@ INSERT INTO `admins` (`credencial_admin`, `password_admin`, `nombre_admin`, `ape
 
 INSERT INTO `infractor` (`credencial`, `password`, `nombre`, `apellidos`, `tlf`, `f_exp_carnet`) VALUES
 ('012345678P', 'PASSWORD', 'PRUEBA1', 'PRUEBAAPE1', 600000000, '1996-11-28'),
-('012345679P', 'PASSWORD', 'PRUEBA2', 'PRUEBAAPE2', 600000001, '1996-11-29'),
+('012345679P', 'PASSWORD', 'PRUEBA2', 'PRUEBAAPE2', 600000001, '1996-11-29');
 
 INSERT INTO `coches` (`n_bastidor`, `matricula`, `year`, `color`, `potencia_cv`, `credencial`) VALUES
 ('PRUEBABASTIDOR1', '0000BBB', 2008, 'OCASO CREMOSO', 110, '012345678P'),
