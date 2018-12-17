@@ -69,6 +69,40 @@ FORM;
 
         # Comprobar caballos
 
+        if(strlen($potencia) < 2 || strlen($potencia) > 4)
+        {
+            print("La potencia debe de estar entre 10 y 9999 caballos");
+            header("refresh:3, url=introducir_coche.php");
+        }
+
+
+        # Ahora todos los datos están validados, vamos con la insercción
+
+        include "conexion_bd.php";
+
+        $credencial = $_SESSION["user"];
+        if($credencial == NULL)
+        {
+            header("location:login.php");
+        }
+
+        $query = "INSERT INTO coches (n_bastidor, matricula, year, color, potencia_cv, credencial)
+                             VALUES  ($numeroBastidor, '$matricula', $año, '$color', $potencia, '$credencial')";
+
+        $consulta = mysqli_query($conexion, $query);
+
+        if($consulta)
+        {
+            echo "Coche $numeroBastidor introducido correctamente!";
+            header("refresh: 2, url=introducir_coche.php");
+        }
+        else
+        {
+            echo "El coche no ha podido ser introducido";
+            header ("refresh: 2, url=introducir_coche.php");
+            mysqli_close();
+        }
+
 
 
     }
