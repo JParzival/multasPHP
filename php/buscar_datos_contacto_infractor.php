@@ -16,7 +16,7 @@
     }
 
     include "conexion_bd.php";
-    $resultado = mysqli_query($conexion, "SELECT i.credencial, nombre, apellidos, tlf, f_exp_carnet FROM infractor i LEFT JOIN coches c ON i.credencial = c.credencial LEFT JOIN multas m ON m.n_bastidor = c.n_bastidor WHERE m.id = $idMulta");
+    $resultado = mysqli_query($conexion, "SELECT i.credencial, nombre, apellidos, tlf, f_exp_carnet FROM infractor i LEFT JOIN multas m ON m.credencial = i.credencial WHERE m.id = $idMulta");
     $nfilas = mysqli_num_rows($resultado);
     if ($nfilas != 0)
         $datosContacto = mysqli_fetch_array($resultado);

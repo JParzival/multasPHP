@@ -53,7 +53,8 @@ FORM;
         if ($fecha == null || $razon == null || $direccion == null || $precio == null ||
             $n_bastidor == null)
         {
-            echo "No se han introducido todos los datos requeridos.";
+            echo "No se han introducido todos los datos requeridos.<br>";
+            mostrarFormulario();
             return;
         }
 
