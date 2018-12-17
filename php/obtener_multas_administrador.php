@@ -11,8 +11,7 @@
     }
 
     include "conexion_bd.php";
-    $resultado = mysqli_query($conexion, "SELECT id, razon, fecha, reclamada, precio, estado, m.n_bastidor, direccion 
-                                          FROM multas m LEFT JOIN coches c ON m.n_bastidor = c.n_bastidor");
+    $resultado = mysqli_query($conexion, "SELECT id, razon, fecha, reclamada, precio, estado, n_bastidor, direccion FROM multas");
 
     $arrayMultas = array();
 

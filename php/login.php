@@ -1,6 +1,10 @@
 <?php
     session_start();
 
+    // Limpiamos cache
+    session_destroy();
+    session_start();
+
     if ($_SERVER["REQUEST_METHOD"] != "POST")
     {
         header("location: ../login_infractor.html");
