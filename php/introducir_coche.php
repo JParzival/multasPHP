@@ -103,8 +103,6 @@ FORM;
             mysqli_close();
         }
 
-
-
     }
 
 ?>
