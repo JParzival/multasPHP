@@ -2,14 +2,14 @@ INSERT INTO `admins` (`credencial_admin`, `password_admin`, `nombre_admin`, `ape
 ('123456789', '12345', 'ADMINITO1', 'BANEADOR1'),
 ('123456790', '12345', 'ADMINITO2', 'BANEADOR2');
 
+INSERT INTO `infractor` (`credencial`, `password`, `nombre`, `apellidos`, `tlf`, `f_exp_carnet`) VALUES
+('012345678P', 'PASSWORD', 'PRUEBA1', 'PRUEBAAPE1', 600000000, '1996-11-28'),
+('012345679P', 'PASSWORD', 'PRUEBA2', 'PRUEBAAPE2', 600000001, '1996-11-29'),
+
 INSERT INTO `coches` (`n_bastidor`, `matricula`, `year`, `color`, `potencia_cv`, `credencial`) VALUES
 ('PRUEBABASTIDOR1', '0000BBB', 2008, 'OCASO CREMOSO', 110, '012345678P'),
 ('PRUEBABASTIDOR2', '0001BBB', 2009, 'OCASO CREMTITA', 101, '012345679P'),
 ('PRUEBABASTIDOR3', '0002BBB', 2010, 'ROJO', 140, '012345678P');
-
-INSERT INTO `infractor` (`credencial`, `password`, `nombre`, `apellidos`, `tlf`, `f_exp_carnet`) VALUES
-('012345678P', 'PASSWORD', 'PRUEBA1', 'PRUEBAAPE1', 600000000, '1996-11-28'),
-('012345679P', 'PASSWORD', 'PRUEBA2', 'PRUEBAAPE2', 600000001, '1996-11-29'),
 
 INSERT INTO `multas` (`id`, `razon`, `fecha`, `reclamada`, `direccion`, `precio`, `estado`, `n_bastidor`, `credencial`) VALUES
 (1, 'Velocidad', '2018-12-01', 0, 'Direccion', 20.3, 0, 'PRUEBABASTIDOR1', '012345678P'),
