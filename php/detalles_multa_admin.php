@@ -25,48 +25,59 @@
     if ($nfilas == 0)
     {
         print("Excepción encontrando multa, ninguna encontrada");
-        header("refresh: 3; url:../index.html");
-        
-    }
-
-    if($nfilas == 2)
-    {
-        print("Excepción encontrando multa, más de una encontrada");
-        header("refresh: 3; url=../index.html");
+        header("refresh: 5; url:../index.html");
+        return;
     }
 
     ## Esto significa que lo hemos hecho bien y que por lo tanto ahora podremos recuperar los resultados de la consulta.
+    $fila = mysqli_fetch_array($consulta);
 
-    $i = 0;
-    for($i; $i < $nfilas; $i++)
+    print("<b>Número Bastidor Multado: </b> ".$fila['n_bastidor']);
+
+    print("<br> <b>Fecha: </b> ".$fila['fecha']);
+    print("<br> <b>Razón: </b> ".$fila['razon']);
+    print("<br> <b>Dirección: </b> ".$fila['direccion']);
+    print("<br> <b>Precio: </b> ".$fila['precio']);
+
+    switch($fila['reclamada'])
     {
-        $fila = mysqli_fetch_array($consulta);
+        case 0: print("<br> <b>Reclamada: </b> No ha sido reclamada");
+                break;
+        case 1: print("<br> <b>Reclamada: </b> Ha sido reclamada");
+                break;
+    }
 
-        print("<b>Número Bastidor Multado: </b> ".$fila['n_bastidor']);
+    switch($fila['estado'])
+    {
+        case 0: print("<br> <b>Estado: </b> No Pagado");
+                break;
+        case 1: print("<br> <b>Estado: </b> Procesando Pago");
+                break;
+        case 2: print("<br> <b>Estado: </b> Pagada");
+                break;
+    }
+    
+    if ($fila['reclamada'] == "1")
+    {
+        $formulario1 = <<<FORM
+        <br><br>
+        <form action="procesar_reclamacion_admin.php" method="POST" ENCTYPE="multipart/form-data">
+            <input type="hidden" name="idMulta" value="$id_multa"/>
+            <input type="hidden" name="accion" value="1"/>
+            <input type="submit" value="Rechazar reclamacion"/>
+        </form>
+FORM;
 
-        print("<br> <b>Fecha: </b> ".$fila['fecha']);
-        print("<br> <b>Razón: </b> ".$fila['razon']);
-        print("<br> <b>Dirección: </b> ".$fila['direccion']);
-        print("<br> <b>Precio: </b> ".$fila['precio']);
-
-        switch($fila['reclamada'])
-        {
-            case 0: print("<br> <b>Reclamada: </b> No ha sido reclamada");
-                    break;
-            case 1: print("<br> <b>Reclamada: </b> Ha sido reclamada");
-                    break;
-        }
-
-        switch($fila['estado'])
-        {
-            case 0: print("<br> <b>Estado: </b> No Pagado");
-                    break;
-            case 1: print("<br> <b>Estado: </b> Procesando Pago");
-                    break;
-            case 2: print("<br> <b>Estado: </b> Pagada");
-                    break;
-        }
+        $formulario2 = <<<FORM2
         
-        print("<br> <a href=\"eliminarMulta.php\"> Eliminar Multa</a>");
+        <form action="procesar_reclamacion_admin.php" method="POST" ENCTYPE="multipart/form-data">
+            <input type="hidden" name="idMulta" value="$id_multa"/>
+            <input type="hidden" name="accion" value="2"/>
+            <input type="submit" value="Aceptar reclamación, borrar multa"/>
+        </form>
+FORM2;
+
+        echo $formulario1;
+        echo $formulario2;
     }
 ?>

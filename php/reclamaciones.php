@@ -38,7 +38,7 @@
                 echo "<td>";
                 echo "  <form action='detalles_reclamacion.php' method='POST' ENCTYPE='multipart/form-data'>";
                 echo "    <input type='hidden' name='recMulta' value='$idMulta'>";
-                echo "    <input class='btn btn-primary' type='submit' value='Detalles reclamacion'>";
+                echo "    <input class='btn btn-primary' type='submit' value='Ver detalles de contacto'>";
                 echo "  </form>";
                 echo "</td>";
                 echo "<td>";

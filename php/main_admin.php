@@ -51,6 +51,7 @@
               <th scope="col">Lugar</th>
               <th scope="col">Precio</th>
               <th scope="col">Estado pago</th>
+              <th scope="col">Reclamada</th>
               
             </tr>
           </thead>
@@ -93,12 +94,15 @@
                             break;
                     }
 
+                    $reclamadaString = $reclamada ? "Sí" : "No";
+
                     echo "<th scope='row'>$nrow</th>";
                     echo "<td>$fecha</td>";
                     echo "<td>$razon</td>";
                     echo "<td>$direccion</td>";
                     echo "<td>$precio €</td>";
                     echo "<td>$estadoString</td>";
+                    echo "<td>$reclamadaString</td>";
                     echo "<td>";
                     echo "  <form action='detalles_multa_admin.php' method='POST' ENCTYPE='multipart/form-data'>";
                     echo "    <input type='hidden' name='detMulta' value='$idMulta'>";
@@ -110,11 +114,6 @@
             ?>
           </tbody>
         </table>
-        <?php
-          echo "<div style='width: 100%;' class='text-center mt-5'>";
-          echo "<a class='btn btn-primary' href='reclamaciones.php' role='button'>Ver reclamaciones</a>";
-          echo "</div>";
-        ?>
       </div>
     </div>
   </div>
