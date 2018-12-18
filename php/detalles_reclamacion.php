@@ -8,7 +8,11 @@
 </head>
 <body>
         <?php
-            session_start();
+            if ($id_multa == null)
+            {
+                header("location: ../login_admin.html");
+                return;
+            }
 
             if (!isset($_SESSION["credencial"]) || !isset($_SESSION["isAdmin"]))
             {
@@ -16,7 +20,13 @@
                 return;
             }
             
-            include "buscar_datos_contacto_infractor.php";
+            include "conexion_bd.php";
+            $resultado = mysqli_query($conexion, "SELECT i.credencial, nombre, apellidos, tlf, f_exp_carnet FROM infractor i LEFT JOIN multas m ON m.credencial = i.credencial WHERE m.id = $id_multa");
+            $nfilas = mysqli_num_rows($resultado);
+            if ($nfilas != 0)
+                $datosContacto = mysqli_fetch_array($resultado);
+            else
+                echo "No se ha encontrado la multa con id: $idMulta";
 
             if ($datosContacto != null)
             {

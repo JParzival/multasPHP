@@ -56,6 +56,9 @@
         case 2: print("<br> <b>Estado: </b> Pagada");
                 break;
     }
+
+    echo "<br>";
+    include "detalles_reclamacion.php";
     
     if ($fila['reclamada'] == "1")
     {
