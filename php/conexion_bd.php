@@ -2,7 +2,7 @@
     ## Credenciales de la base de datos
 
     $user = 'root';
-    $contrasena = 'rootpass1234';
+    $contrasena = '';
     $ip = 'localhost';
     $database = 'database_multas';
 
