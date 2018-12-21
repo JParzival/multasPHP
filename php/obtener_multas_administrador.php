@@ -11,7 +11,7 @@
     }
 
     include "conexion_bd.php";
-    $resultado = mysqli_query($conexion, "SELECT id, razon, fecha, reclamada, precio, estado, n_bastidor, direccion FROM multas");
+    $resultado = mysqli_query($conexion, "SELECT id, razon, fecha, reclamada, precio, estado, matricula, direccion, credencial FROM multas WHERE `admin` = '$credencial'");
 
     $arrayMultas = array();
 
@@ -23,8 +23,9 @@
         $reclamada = $row["reclamada"];
         $precio = $row["precio"];
         $estado = $row["estado"];
-        $nbastidor = $row["n_bastidor"];
+        $matricula = $row["matricula"];
         $direccion = $row["direccion"];
+        $infractor = $row["credencial"];
 
         $arrayMultas[$idMulta] = array
         (
@@ -34,8 +35,9 @@
             "reclamada" => $reclamada,
             "precio" => $precio,
             "estado" => $estado,
-            "nbastidor" => $nbastidor,
-            "direccion" => $direccion
+            "matricula" => $matricula,
+            "direccion" => $direccion,
+            "infractor" => $infractor
         );
     }
 

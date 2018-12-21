@@ -51,7 +51,6 @@ INSERT INTO `admins` (`credencial_admin`, `password_admin`, `nombre_admin`, `ape
 
 CREATE TABLE `coches` (
   `n_bastidor` varchar(50) NOT NULL,
-  `matricula` varchar(10) NOT NULL,
   `year` int(11) NOT NULL,
   `color` varchar(50) NOT NULL,
   `potencia_cv` int(4) NOT NULL,
@@ -62,10 +61,30 @@ CREATE TABLE `coches` (
 -- Dumping data for table `coches`
 --
 
-INSERT INTO `coches` (`n_bastidor`, `matricula`, `year`, `color`, `potencia_cv`, `credencial`) VALUES
-('123456789', '0000BBB', 2008, 'OCASO CREMOSO', 110, '12345678P'),
-('987654321', '0001BBB', 2009, 'OCASO CREMTITA', 101, '12345679P'),
-('135792468', '0002BBB', 2010, 'ROJO', 140, '12345678P');
+INSERT INTO `coches` (`n_bastidor`, `year`, `color`, `potencia_cv`, `credencial`) VALUES
+('123456789', 2008, 'OCASO CREMOSO', 110, '12345678P'),
+('987654321', 2009, 'OCASO CREMTITA', 101, '12345679P'),
+('135792468', 2010, 'ROJO', 140, '12345678P');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `matriculas`
+--
+
+CREATE TABLE `matriculas` (
+  `matricula` varchar(50) NOT NULL,
+  `n_bastidor` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `coches`
+--
+
+INSERT INTO `matriculas` (`matricula`, `n_bastidor`) VALUES
+('0000 BBB', '123456789'),
+('0001 BBB', '987654321'),
+('0002 BBB', '135792468');
 
 -- --------------------------------------------------------
 
@@ -104,7 +123,7 @@ CREATE TABLE `multas` (
   `direccion` varchar(255) NOT NULL,
   `precio` float NOT NULL,
   `estado` int(1) NOT NULL,
-  `n_bastidor` varchar(50) NOT NULL,
+  `matricula` varchar(50) NOT NULL,
   `credencial` varchar(255) NOT NULL,
   `admin` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -113,12 +132,12 @@ CREATE TABLE `multas` (
 -- Dumping data for table `multas`
 --
 
-INSERT INTO `multas` (`id`, `razon`, `fecha`, `reclamada`, `direccion`, `precio`, `estado`, `n_bastidor`, `credencial`, `admin`) VALUES
-(1, 'Velocidad', '2018-12-01', 0, 'Direccion', 20.3, 0, '123456789', '12345678P', '123456789'),
-(2, 'Aparcamiento', '2018-11-04', 1, 'Direccion2', 10, 0, '987654321', '12345679P', '123456789'),
-(3, 'Saltarse un semaforo', '2012-12-12', 1, 'Direccion3', 2000, 0, '123456789', '12345678P', '123456789'),
-(4, 'Saltarse un stop', '2012-12-12', 1, 'Direccion4', 2000, 0, '987654321', '12345679P', '123456789'),
-(5, 'Aparcamiento', '2012-11-01', 0, 'Direccion5', 213, 1, '123456789', '12345678P', '123456789');
+INSERT INTO `multas` (`id`, `razon`, `fecha`, `reclamada`, `direccion`, `precio`, `estado`, `matricula`, `credencial`, `admin`) VALUES
+(1, 'Velocidad', '2018-12-01', 0, 'Direccion', 20.3, 0, '0000 BBB', '12345678P', '123456789'),
+(2, 'Aparcamiento', '2018-11-04', 1, 'Direccion2', 10, 0, '0001 BBB', '12345679P', '123456789'),
+(3, 'Saltarse un semaforo', '2012-12-12', 1, 'Direccion3', 2000, 0, '0000 BBB', '12345678P', '123456789'),
+(4, 'Saltarse un stop', '2012-12-12', 1, 'Direccion4', 2000, 0, '0001 BBB', '12345679P', '123456789'),
+(5, 'Aparcamiento', '2012-11-01', 0, 'Direccion5', 213, 1, '0000 BBB', '12345678P', '123456789');
 
 --
 -- Indexes for dumped tables
@@ -138,6 +157,14 @@ ALTER TABLE `coches`
   ADD KEY `credencial` (`credencial`);
 
 --
+-- Indexes for table `matriculas`
+--
+
+ALTER TABLE `matriculas`
+  ADD PRIMARY KEY (`matricula`),
+  ADD KEY `n_bastidor` (`n_bastidor`);
+
+--
 -- Indexes for table `infractor`
 --
 ALTER TABLE `infractor`
@@ -148,7 +175,7 @@ ALTER TABLE `infractor`
 --
 ALTER TABLE `multas`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `n_bastidor` (`n_bastidor`),
+  ADD KEY `matricula` (`matricula`),
   ADD KEY `credencial` (`credencial`);
 
 --
@@ -172,10 +199,16 @@ ALTER TABLE `coches`
   ADD CONSTRAINT `coches_ibfk_1` FOREIGN KEY (`credencial`) REFERENCES `infractor` (`credencial`);
 
 --
+-- Constraints for table `matriculas`
+--
+ALTER TABLE `matriculas`
+  ADD CONSTRAINT `matriculas_ibfk_1` FOREIGN KEY (`n_bastidor`) REFERENCES `coches` (`n_bastidor`);
+
+--
 -- Constraints for table `multas`
 --
 ALTER TABLE `multas`
-  ADD CONSTRAINT `multas_ibfk_1` FOREIGN KEY (`n_bastidor`) REFERENCES `coches` (`n_bastidor`),
+  ADD CONSTRAINT `multas_ibfk_1` FOREIGN KEY (`matricula`) REFERENCES `matriculas` (`matricula`),
   ADD CONSTRAINT `multas_ibfk_2` FOREIGN KEY (`credencial`) REFERENCES `infractor` (`credencial`),
   ADD CONSTRAINT `multas_ibfk_3` FOREIGN KEY (`admin`) REFERENCES `admins` (`credencial_admin`);
 COMMIT;

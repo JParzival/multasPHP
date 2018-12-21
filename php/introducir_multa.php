@@ -12,18 +12,18 @@
     function mostrarFormulario()
     {
         include "conexion_bd.php";
-        $arrayBastidores = array();
-        $nbastidoresResult = mysqli_query($conexion, "SELECT n_bastidor FROM coches");
+        $arrayMatriculas = array();
+        $matriculasResult = mysqli_query($conexion, "SELECT matricula FROM matriculas");
         
-        if (mysqli_num_rows($nbastidoresResult) > 0)
-            while ($row = mysqli_fetch_array($nbastidoresResult))
-                array_push($arrayBastidores, $row["n_bastidor"]);
+        if (mysqli_num_rows($matriculasResult) > 0)
+            while ($row = mysqli_fetch_array($matriculasResult))
+                array_push($arrayMatriculas, $row["matricula"]);
 
         $fecha = isset($_SESSION["nmFecha"]) ? $_SESSION["nmFecha"] : "";
         $razon = isset($_SESSION["nmRazon"]) ? $_SESSION["nmRazon"] : "";
         $direccion = isset($_SESSION["nmDireccion"]) ? $_SESSION["nmDireccion"] : "";
         $precio = isset($_SESSION["nmPrecio"]) ? $_SESSION["nmPrecio"] : "";
-        $n_bastidor = isset($_SESSION["nmNBastidor"]) ? $_SESSION["nmNBastidor"] : "";
+        $matriculaInput = isset($_SESSION["nmMatricula"]) ? $_SESSION["nmMatricula"] : "";
 
         $formulario = <<<FORM
 
@@ -40,14 +40,14 @@
 FORM;
         print($formulario);
 
-        echo "Número de bastidor: <select name='numeroBastidor' required>";
+        echo "Matrícula: <select name='numeroMatricula' required>";
         echo "<option disabled selected value>";
-        foreach ($arrayBastidores as $bastidor)
+        foreach ($arrayMatriculas as $matricula)
         {
-            if ($bastidor == $n_bastidor)
-                echo "<option value='$bastidor' selected> $bastidor</option>";
+            if ($matriculaInput == $matricula)
+                echo "<option value='$matricula' selected> $matricula</option>";
             else
-                echo "<option value='$bastidor'> $bastidor </option>";
+                echo "<option value='$matricula'> $matricula </option>";
         }
 
         echo "</select>";
@@ -67,9 +67,9 @@ FORM;
         $razon = isset($_POST["razon"]) ? $_POST["razon"] : null;
         $direccion = isset($_POST["direccion"]) ? $_POST["direccion"] : null;
         $precio = isset($_POST["precio"]) ? $_POST["precio"] : null;
-        $n_bastidor = isset($_POST["numeroBastidor"]) ? $_POST["numeroBastidor"] : null;
+        $matricula = isset($_POST["numeroMatricula"]) ? $_POST["numeroMatricula"] : null;
         if ($fecha == null || $razon == null || $direccion == null || $precio == null ||
-            $n_bastidor == null)
+            $matricula == null)
         {
             echo "No se han introducido todos los datos requeridos.<br>";
             mostrarFormulario();
@@ -80,7 +80,7 @@ FORM;
         $_SESSION["nmRazon"] = $razon;
         $_SESSION["nmDireccion"] = $direccion;
         $_SESSION["nmPrecio"] = $precio;
-        $_SESSION["nmNBastidor"] = $n_bastidor;
+        $_SESSION["nmMatricula"] = $matricula;
 
         $error = false;
 
@@ -110,12 +110,23 @@ FORM;
             $_SESSION["nmFecha"] = null;
         }
 
-        # Compruebo número de bastidor
-        if (preg_match('~[0-9]~', $n_bastidor) !== 1)
+       // Warning, Warning: date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone.
+       date_default_timezone_set("Europe/Madrid");
+       if ($fechaOk && $fecha > date("Y-m-d"))
+       {
+           print("La fecha introducida no puede ser mayor a la actual.<br>");
+           $_SESSION['nmFecha'] = null;
+           $error = true;
+       }
+
+        #Comprobamos matrícula
+        if (preg_match("/[[:digit:]]{4} [[:alpha:]]{3}/", $matricula) != 1 &&
+            preg_match("/[[:alpha:]]{1} [[:digit:]]{4} [[:alpha:]]{2}/", $matricula) != 1 &&
+            preg_match("/[[:alpha:]]{2} [[:digit:]]{4} [[:alpha:]]{1}/", $matricula) != 1)
         {
-            echo "El número de bastidor no es número<br>";
+            print("La matrícula introducida no es correcta.<br>");
+            $_SESSION["nmMatricula"] = null;
             $error = true;
-            $_SESSION["nmNBastidor"] = null;
         }
 
         if ($error)
@@ -129,7 +140,7 @@ FORM;
 
         include "conexion_bd.php";
 
-        $queryCoche = "SELECT n_bastidor, credencial FROM coches WHERE n_bastidor = '$n_bastidor'";
+        $queryCoche = "SELECT m.matricula, m.n_bastidor, c.credencial FROM matriculas m LEFT JOIN coches c ON m.n_bastidor = c.n_bastidor WHERE m.matricula = '$matricula'";
         $resultadoCoche = mysqli_query($conexion, $queryCoche);
         if (mysqli_num_rows($resultadoCoche) == 0)
         {
@@ -152,8 +163,8 @@ FORM;
 
         $credencialAdmin = $_SESSION["credencial"];
         $query = "INSERT INTO multas
-                         (razon, fecha, reclamada, direccion, precio, estado, n_bastidor, credencial, `admin`)
-                   VALUES('$razon', '$fecha', 0, '$direccion', '$precio', 0, '$n_bastidor', '$credencial', '$credencialAdmin')";
+                         (razon, fecha, reclamada, direccion, precio, estado, matricula, credencial, `admin`)
+                   VALUES('$razon', '$fecha', 0, '$direccion', '$precio', 0, '$matricula', '$credencial', '$credencialAdmin')";
         
         $resultado = mysqli_query($conexion, $query);
 
@@ -167,7 +178,7 @@ FORM;
             $_SESSION["nmRazon"] = null;
             $_SESSION["nmDireccion"] = null;
             $_SESSION["nmPrecio"] = null;
-            $_SESSION["nmNBastidor"] = null;
+            $_SESSION["nmMatricula"] = null;
         }
         else
         {

@@ -15,7 +15,7 @@
     
     include 'conexion_bd.php';
     
-    $consulta = mysqli_query ($conexion, "SELECT fecha, razon, reclamada, direccion, precio, estado, n_bastidor, nombre_admin FROM multas m LEFT JOIN admins a ON m.admin = a.credencial_admin WHERE id = '$id_multa'");
+    $consulta = mysqli_query ($conexion, "SELECT fecha, razon, reclamada, direccion, precio, estado, matricula, nombre_admin, credencial FROM multas m LEFT JOIN admins a ON m.admin = a.credencial_admin WHERE id = '$id_multa'");
     $nfilas = mysqli_num_rows($consulta);
     if ($nfilas == 0)
     {
@@ -34,7 +34,8 @@
     $fila = mysqli_fetch_array($consulta);
 
     echo "<b>Administrador: ".$fila["nombre_admin"]."</b>";
-    print("<br><b>Número Bastidor Multado: </b> ".$fila['n_bastidor']);
+    print("<br><b>Matrícula Multada: </b> ".$fila['matricula']);
+    print("<br><b>Infractor: </b> ".$fila['credencial']);
 
     print("<br> <b>Fecha: </b> ".$fila['fecha']);
     print("<br> <b>Razón: </b> ".$fila['razon']);
@@ -57,21 +58,21 @@
     {
         case 0: print("<br> <b>Estado: </b> No Pagado");
                 break;
-        case 1: print("<br> <b>Estado: </b> Procesando Pago");
+        case 1: print("<br> <b>Estado: </b> Pagada");
                 break;
         case 2:
-            print("<br> <b>Estado: </b> Pagada");
+            print("<br> <b>Estado: </b> En proceso de pago");
             break;
         default:
             break;
     }
 
-    if ($fila['estado'] == "2")
+    if ($fila['estado'] > 0)
         print("<br><br> <form action=\"../formas_pago.html\" method=\"POST\" ENCTYPE=\"multipart/form-data\"> <input type=\"Submit\" value=\"Pagar\" disabled> </form>");
     else
         print("<br><br> <form action=\"../formas_pago.html\" method=\"POST\" ENCTYPE=\"multipart/form-data\"> <input type=\"Submit\" value=\"Pagar\"> </form>");
     
-    if ($fila["reclamada"] == 0)
+    if ($fila["reclamada"] == 0 && $fila['estado'] == 0)
         print("<form action=\"procesar_reclamar_multa.php\" method=\"POST\" ENCTYPE=\"multipart/form-data\"> <input type=\"Submit\" value=\"Reclamar multa\"> </form>");
     else
         print("<form action=\"procesar_reclamar_multa.php\" method=\"POST\" ENCTYPE=\"multipart/form-data\"> <input type=\"Submit\" value=\"Reclamar multa\" disabled> </form>");

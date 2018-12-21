@@ -46,6 +46,8 @@
           <thead>
             <tr>
               <th scope="col">#</th>
+              <th scope="col">Matricula</th>
+              <th scope="col">Infractor</th>
               <th scope="col">Fecha</th>
               <th scope="col">Razón</th>
               <th scope="col">Lugar</th>
@@ -75,8 +77,9 @@
                     $reclamada = $multa["reclamada"];
                     $precio = $multa["precio"];
                     $estado = $multa["estado"];
-                    //$nbastidor = $multa["n_bastidor"];
+                    $matricula = $multa["matricula"];
                     $direccion = $multa["direccion"];
+                    $infractor = $multa["infractor"];
                     
                     $estadoString = "";
                     switch ($estado)
@@ -97,6 +100,8 @@
                     $reclamadaString = $reclamada ? "Sí" : "No";
 
                     echo "<th scope='row'>$nrow</th>";
+                    echo "<td>$matricula</td>";
+                    echo "<td>$infractor</td>";
                     echo "<td>$fecha</td>";
                     echo "<td>$razon</td>";
                     echo "<td>$direccion</td>";

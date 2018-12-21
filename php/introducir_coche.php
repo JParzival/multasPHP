@@ -5,6 +5,7 @@
 
     function mostrarFormulario($isAdmin)
     {
+        include "conexion_bd.php";
         $color = isset($_SESSION["ncColor"]) ? $_SESSION["ncColor"] : "";
         $matricula = isset($_SESSION["ncMatricula"]) ? $_SESSION["ncMatricula"] : "";
         $numeroBastidor = isset($_SESSION["ncNumeroBastidor"]) ? $_SESSION["ncNumeroBastidor"] : "";
@@ -27,8 +28,27 @@
             Potencia (Caballos): <input type="number" name="potencia" value="$potencia" required>
 FORM;
         echo $formulario;
+
         if ($isAdmin)
-            echo "<br> DNI: <input type='text' name='dni' value = '$dni' required>";
+        {
+            $dniArray = array();
+            $dniResult = mysqli_query($conexion, "SELECT credencial FROM infractor");
+            while ($row = mysqli_fetch_array($dniResult))
+                array_push($dniArray, $row["credencial"]);
+
+            echo "<br> DNI/CIF: <select name='dni' required>";
+            echo "<option disabled selected value>";
+
+            foreach ($dniArray as $d)
+            {
+                if ($d == $dni)
+                    echo "<option value='$d' selected>$d</option>";
+                else
+                    echo "<option value='$d'>$d</option>";
+            }
+
+            echo "</select>";
+        }
 
         echo "<br><input type='submit' value='Registrar Coche'> </form>";
     }
@@ -143,19 +163,25 @@ FORM;
             return;
         }
 
-        $query = "INSERT INTO coches (n_bastidor, matricula, `year`, color, potencia_cv, credencial)
-                             VALUES  ($numeroBastidor, '$matricula', $año, '$color', $potencia, '$credencialDB')";
+        $query = "INSERT INTO coches (n_bastidor, `year`, color, potencia_cv, credencial)
+                             VALUES  ($numeroBastidor, $año, '$color', $potencia, '$credencialDB')";
 
         $consulta = mysqli_query($conexion, $query);
 
-        if ($consulta)
+        if (!$consulta)
         {
-            echo "Coche $numeroBastidor introducido correctamente!";
+            echo mysqli_error($conexion);
+            echo "El coche no ha podido ser introducido.";
+            header("refresh: 5; url=introducir_coche.php");
+            return;
+        }
 
-            if ($isAdmin)
-                header("refresh: 5; url=main_infractor.php");
-            else
-                header("refresh: 5; url=main_admin.php");
+        $query2 = "INSERT INTO matriculas (matricula, n_bastidor) VALUES ('$matricula', $numeroBastidor)";
+        $consulta2 = mysqli_query($conexion, $query2);
+
+        if ($consulta2)
+        {
+            echo "Coche con matricula $matricula introducido correctamente!";
 
             // Limpiamos las variables
             $_SESSION["ncColor"] = null;
@@ -163,6 +189,11 @@ FORM;
             $_SESSION["ncNumeroBastidor"] = null;
             $_SESSION["ncAno"] = null;
             $_SESSION["ncPotencia"] = null;
+
+            if ($isAdmin)
+                header("refresh: 5; url=main_admin.php");
+            else
+                header("refresh: 5; url=main_infractor.php");
         }
         else
         {

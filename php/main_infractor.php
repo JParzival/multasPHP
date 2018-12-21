@@ -46,10 +46,10 @@
           <thead>
             <tr>
               <th scope="col">#</th>
+              <th scope="col">Matricula</th>
               <th scope="col">Fecha</th>
               <th scope="col">Razón</th>
               <th scope="col">Lugar</th>
-              <th scope="col">Precio</th>
               <th scope="col">Estado pago</th>
               <th scope="col">Acciones</th>
             </tr>
@@ -70,13 +70,12 @@
                 {
                     ++$nrow;
                     $idMulta = $multa["idMulta"];
-                    $razon = $multa["razon"];
                     $fecha = $multa["fecha"];
                     $reclamada = $multa["reclamada"];
                     $precio = $multa["precio"];
                     $estado = $multa["estado"];
-                    //$nbastidor = $multa["n_bastidor"];
                     $direccion = $multa["direccion"];
+                    $matricula = $multa["matricula"];
                     
                     $estadoString = "";
                     switch ($estado)
@@ -95,10 +94,10 @@
                     }
 
                     echo "<th scope='row'>$nrow</th>";
+                    echo "<td>$matricula</td>";
                     echo "<td>$fecha</td>";
                     echo "<td>$razon</td>";
                     echo "<td>$direccion</td>";
-                    echo "<td>$precio €</td>";
                     echo "<td>$estadoString</td>";
                     echo "<td>";
                     echo "  <form action='obtener_detalles_multa.php' method='POST' ENCTYPE='multipart/form-data'>";

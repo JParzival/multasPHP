@@ -19,7 +19,7 @@
     echo "<b>Id multa:</b> $id_multa<br>";
     include 'conexion_bd.php';
     
-    $consulta = mysqli_query ($conexion, "SELECT fecha, razon, reclamada, direccion, precio, estado, n_bastidor FROM multas WHERE id = '$id_multa'");
+    $consulta = mysqli_query ($conexion, "SELECT fecha, razon, reclamada, direccion, precio, estado, matricula, credencial FROM multas WHERE id = '$id_multa'");
     $nfilas = mysqli_num_rows($consulta);
     
     if ($nfilas == 0)
@@ -32,7 +32,8 @@
     ## Esto significa que lo hemos hecho bien y que por lo tanto ahora podremos recuperar los resultados de la consulta.
     $fila = mysqli_fetch_array($consulta);
 
-    print("<b>Número Bastidor Multado: </b> ".$fila['n_bastidor']);
+    print("<b>Matrícula multada: </b> ".$fila['matricula']);
+    print("<br><b>Infractor: </b> ".$fila['credencial']);
 
     print("<br> <b>Fecha: </b> ".$fila['fecha']);
     print("<br> <b>Razón: </b> ".$fila['razon']);
